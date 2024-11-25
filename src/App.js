@@ -1,23 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import ButtonComponent from './components/ButtonComponent';
+import ImageComponent from './components/ImageComponent';
 
 function App() {
+
+  // Updated array with a new `text` property
+  const componentsInformation = [
+    {
+      src: 'https://placehold.co/300x200/white/black',
+      message: 'Cliccami 1',
+      text: 'messaggio 1',
+    },
+    {
+      src: 'https://placehold.co/300x200/orange/black',
+      message: 'Cliccami 2',
+      text: 'messaggio 2',
+    },
+    {
+      src: 'https://placehold.co/300x200/red/white',
+      message: 'Cliccami 3',
+      text: 'messaggio 3',
+    },
+  ];
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="imageContainer">
+      {componentsInformation.map((item, index) => (
+        <div className="imageWrapper" key={index}>
+          <ImageComponent src={item.src + '?text=' + index} alt={`Image ${index + 1}`} />
+          <ButtonComponent
+            text={item.message}
+            alertMessage={item.text}
+          />
+        </div>
+      ))}
     </div>
   );
 }
