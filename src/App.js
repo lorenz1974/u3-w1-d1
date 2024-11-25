@@ -7,7 +7,7 @@ function App() {
   // Updated array with a new `text` property
   const componentsInformation = [
     {
-      src: 'https://placehold.co/300x200/white/black',
+      src: 'https://placehold.co/300x200/black/white',
       message: 'Cliccami 1',
       text: 'messaggio 1',
     },

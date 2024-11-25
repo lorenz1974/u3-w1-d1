@@ -2,6 +2,7 @@
 
 .imageContainer {
   display: flex;
+  justify-content: space-around;
   flex-wrap: wrap;
   gap: 20px;
   /* Space between images */
@@ -10,10 +11,15 @@
 .imageWrapper {
   position: relative;
   display: inline-block;
+  animation: entrance 1s ease 1;
+  /* Animation runs only once */
 }
 
 .imageWrapper:hover {
-  animation: scalePulse .5s ease 1;
+  transform: scale(1.05);
+  /* Scale without triggering entrance */
+  transition: transform 0.3s ease;
+  /* Smooth scale effect */
 }
 
 .imageWrapper img {
@@ -21,6 +27,8 @@
   max-width: 100%;
   height: auto;
 }
+
+
 
 .imageButton {
   position: absolute;
@@ -33,24 +41,23 @@
   border-radius: 10px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  /* Smooth hover effect */
+}
+
+body .imageWrapper:nth-of-type(1) .imageButton {
+  background-color: rgba(255, 255, 255, 0.7);
+  color: black;
 }
 
 .imageButton:hover {
   background-color: rgba(0, 0, 0, 0.9);
 }
 
-@keyframes scalePulse {
+@keyframes entrance {
   0% {
-    transform: scale(1);
-  }
-
-  50% {
-    transform: scale(1.05);
-    /* Slightly increase size */
+    transform: translateX(-1000px);
   }
 
   100% {
-    transform: scale(1);
+    transform: translateX(0);
   }
 }
